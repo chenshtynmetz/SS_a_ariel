@@ -21,6 +21,9 @@ int isPalindrome(int a){
     }
     x=a;
     if(seconDigit(a, sumOfDigit) == 0){
+        if(sumOfDigit-2 == 2){
+            if(a%100 == 0) return 1;
+        }
        x=x/10; 
     }
     x=x/10;
