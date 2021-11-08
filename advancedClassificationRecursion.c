@@ -2,14 +2,14 @@
 #include "NumClass.h"
 #include <math.h>
 
-int seconDigit(int a, int digit){
-    if(digit< 1) return -1;
-    int x= (int) pow(10,digit-2);
-    int b= a%x;
-    int ans=(a-b)/x;
-    ans= ans%10;
-    return ans;
-}
+// int seconDigit(int a, int digit){
+//     if(digit< 1) return -1;
+//     int x= pow(10,digit-2);
+//     int b= a%x;
+//     int ans=(a-b)/x;
+//     ans= ans%10;
+//     return ans;
+// }
 
 int isPalindrome(int a){
     if(a<10) return 1;
@@ -20,15 +20,18 @@ int isPalindrome(int a){
         sumOfDigit++;
     }
     x=a;
-    if(seconDigit(a, sumOfDigit) == 0){
-        if(sumOfDigit-2 == 2){
-            if(a%100 == 0) return 1;
-        }
-       x=x/10; 
-    }
-    x=x/10;
+   // int sec=seconDigit(a, sumOfDigit);
     int temp= pow(10, (sumOfDigit-2));
+    // if(sec == 0){
+    //     if((x%10) != (x/(pow(10,(sumOfDigit-1))))) return 0;
+    //     x=x/10; 
+    //     //sumOfDigit--;
+    //     temp= pow(10, (sumOfDigit-3));
+    // }
+    x=x/10;
     x= x%temp;
+    //printf("%d", x);
+    if(x == 0)return 1;
     int ans= isPalindrome(x);
     if(ans==0) return 0;
     else if((a%10) != (a/(temp*10))) return 0;
