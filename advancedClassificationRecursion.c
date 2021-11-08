@@ -11,32 +11,47 @@
 //     return ans;
 // }
 
-int isPalindrome(int a){
-    if(a<10) return 1;
-    int x=a;
-    int sumOfDigit=0;
-    while(x>0){
-        x= x/10;
-        sumOfDigit++;
-    }
-    x=a;
-   // int sec=seconDigit(a, sumOfDigit);
-    int temp= pow(10, (sumOfDigit-2));
-    // if(sec == 0){
-    //     if((x%10) != (x/(pow(10,(sumOfDigit-1))))) return 0;
-    //     x=x/10; 
-    //     //sumOfDigit--;
-    //     temp= pow(10, (sumOfDigit-3));
-    // }
-    x=x/10;
-    x= x%temp;
-    //printf("%d", x);
-    if(x == 0)return 1;
-    int ans= isPalindrome(x);
-    if(ans==0) return 0;
-    else if((a%10) != (a/(temp*10))) return 0;
-    return 1;
+// int isPalindrome(int a){
+//     if(a<10) return 1;
+//     int x=a;
+//     int sumOfDigit=0;
+//     while(x>0){
+//         x= x/10;
+//         sumOfDigit++;
+//     }
+//     if(sumOfDigit == 2){
+//         if((a%10) != (a/10)) return 0;
+//         return 1; 
+//     }
+//     x=a;
+//     int sec=seconDigit(a, sumOfDigit);
+//     int temp= pow(10, (sumOfDigit-2));
+//     if(sec == 0){
+//         if((x%10) != (x/(pow(10,(sumOfDigit-1))))) return 0;
+//         x=x/10; 
+//         //sumOfDigit--;
+//         temp= pow(10, (sumOfDigit-3));
+//     }
+//     x=x/10;
+//     x= x%temp;
+//     if(x == 0)return 1;
+//     int ans= isPalindrome(x);
+//     if(ans==0) return 0;
+//     else if((a%10) != (a/(temp*10))) return 0;
+//     return 1;
+// }
+
+int reverseNum(int a, int reverse){
+    if (a==0) return reverse;
+    reverse= reverse*10 + a%10;
+    return reverseNum(a/10, reverse);
 }
+int isPalindrome(int a){
+    int ans=reverseNum(a, 0);
+    if(ans== a) return 1;
+    return 0;
+}
+
 
 int isArmstrong2(int a, int digits){
     if((a/10) < 1){
